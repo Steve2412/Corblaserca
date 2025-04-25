@@ -1,0 +1,28 @@
+@import 'reset/variables' , 'reset/mixins' , 'reset/reset' ,'reset/keyframes';
+.carrousel {
+    width: 90%;
+    max-width: 120em;
+    background-color: lightskyblue;
+}
+.carrousel .grande {
+    width: 200%;
+    background-color: orange;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.carrousel .img {
+    width: calc(100% / 2);
+    background-color: lime;
+}
+.carrousel .puntos{
+    width: 100%;
+    background-color: red;
+    padding: 1em;
+}
+.carrousel .punto{
+    width: 2em;
+    height: 1em;
+    background-color: blue;
+}

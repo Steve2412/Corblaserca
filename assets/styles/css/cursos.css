@@ -1,0 +1,76 @@
+p{
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: bold;
+}
+html{
+    font-size: 62.5%;
+ }
+.footer{
+   background-color: var(--white);
+   border-top: var(--border);
+   position: relative;
+   bottom: 0; left: 0; right: 0;
+   text-align: center;
+   font-size: 2rem;
+   padding:2.5rem 2rem;
+   color:var(--black);
+   margin-top: 1rem;
+   z-index: 1000;   /* padding-bottom: 9.5rem; */
+   
+}
+ 
+ .footer span{
+    color:var(--main-color);
+ }      
+.descargar {
+    padding: 12px;
+    padding-left: 15px;
+}
+.descargar-btn{
+    text-decoration: none;
+    padding: 12px;
+    margin-left: 20px;
+    color: black;
+    background: rgb(14, 184, 28);
+    border: 2px solid #000;
+    border-radius: 5px;
+    transition: all 5ms;
+}
+
+.descargar-btn:hover {
+    
+    background: rgba(32, 129, 40, 0.959);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+.exercise-h1 {
+    padding-left: 15px;
+}
+
+.exercise-a {
+    padding-left: 15px;
+    text-decoration: none;
+    color: blue;
+    font-size: 2em;
+}
+.exercise-a:hover {
+    color: rgba(0, 0, 255, 0.315);
+}
+#wrap {
+    width: 70%;
+    height: 100%;
+}
+
+@media (max-width: 768px){
+    #wrap {
+        width: 90%;
+    }
+    iframe {
+        width: 300px;
+        height: 150px;
+    }
+}
