@@ -1,0 +1,137 @@
+.body {
+    padding-top: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+form {
+    padding: 50px 55px 85px 55px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    width: 460px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.encabezado2 {
+    color: #181818;
+    font-size: 35px;
+    margin: 0;
+
+}
+
+p{
+    font-size: 16px;
+    color: #353535;
+    margin-bottom: 20px;
+}
+
+.line {
+    display: inline-block;
+    width: 50px;
+    height: 7px;
+    background: linear-gradient(90deg, rgba(214, 0, 254, 1), 0%, rgba(136, 1, 254, 1) 77%) ;
+}
+label {
+    color: #181818;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.radio-label {
+    color: #181818;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.radio-label-title {
+    color: #181818;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+input {
+    padding: 17px 18px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    border:  2px solid #ededed;
+    color: #181818;
+    outline: none;
+}
+.radio-input {
+    padding: 17px 18px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    border:  2px solid #ededed;
+    color: #181818;
+    outline: none;
+}
+input:placeholder {
+    color: #c0c0c0;
+}
+
+.form-txt {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.form-txt a {
+    color: #181818;
+    font-size: 14px;
+    font-weight: 600;   
+    text-decoration: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn {
+    background-color:blue;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, rgba(blue) 0%, rgba(blue) 77%);
+}
+
+.selectWrapper{
+    position: relative;
+    left: 2em;
+    border-radius:36px;
+    display:inline-block;
+    overflow:hidden;
+    background:#cccccc;
+    border:1px solid #cccccc;
+  }
+  .selectBox{
+    width:300px;
+    height:40px;
+    border:0px;
+    outline:none;
+  }
+
+@media(max-width: 932px) {
+    .body {
+        padding: 30px;
+    }
+    form {
+        padding: 50px 30px;
+        width: 100%;
+    }
+
+    input {
+        padding: 15px 18px;
+    }    
+}

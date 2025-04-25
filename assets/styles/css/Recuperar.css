@@ -1,0 +1,530 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arimo;
+  /*background-image: url(../Imagenes/Imagen-Login.jpg);*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+.Fondo-Blanco {
+  background-color: #24252a;
+  width: 900px;
+  height: 500px;
+  position: relative;
+  margin-top: 30%;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5%;
+}
+
+.Login-Texto {
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.Entrada-Datos-1,
+.Entrada-Datos-2,
+.Entrada-Datos-3,
+.Formulario {
+  background-color: transparent;
+}
+.Insertar-Primero
+ {
+  position: relative;
+  left: 38em;
+  bottom: 5em;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+  background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  height: 60px;
+  width: 250px;
+  margin-top: 20px;
+}
+
+.Insertar-Segundo{
+
+  position: relative;
+  left: 38em;
+  bottom: 5em;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+  background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  height: 60px;
+  width: 250px;
+  margin-top: 20px;
+
+
+}
+
+.Insertar-Tercero{
+
+  position: relative;
+  left: 38em;
+  bottom: 8em;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+  background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  height: 60px;
+  width: 250px;
+  margin-top: 20px;
+
+
+}
+  :hover {
+    border-color: #ccc;
+  }
+  :focus {
+    border-color: #9147ff;
+    background: #fff;
+  }
+
+
+.Entrada-Datos-2,
+.Entrada-Datos-3 {
+  display: none;
+}
+
+.Boton-Siguiente
+{
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0 56px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+  transition: box-shadow 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  left: 35em;
+  bottom: 2.5em;
+  }
+.Boton-Codigo{
+
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0 56px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+  transition: box-shadow 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  left: 34em;
+  bottom: 4.5em;
+
+
+}
+
+.Boton-Regresar{
+
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0 56px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+  transition: box-shadow 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  left: 34em;
+  top: 3.5em;
+
+
+}
+
+.Boton-Cambiar{
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0 56px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+  transition: box-shadow 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  left: 33em;
+  bottom: 4em;
+  }
+
+
+
+
+
+
+.Boton-Codigo,
+.Boton-Cambiar {
+  display: none;
+}
+
+.Iniciar-Sesion-Page {
+  margin-top: 20px;
+  background-color: transparent;
+  position: relative;
+  left: 120px;
+  top: 100px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Registro_Imagen {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  left: 8em;
+  top: 100px;
+}
+
+@media screen and (max-width: 940px) {
+
+.Fondo-Blanco{
+
+margin-top: 45%;
+
+width: 45em;
+
+  }
+.Insertar-Primero,
+.Insertar-Segundo,
+.Insertar-Tercero {
+
+left: 29em;
+
+
+
+}
+
+.Boton-Siguiente{
+
+
+left: 27em;
+
+}
+
+.Boton-Codigo{
+
+  left: 26.2em;
+
+}
+
+.Boton-Regresar{
+
+  left: 26.2em;
+
+}
+
+
+.Boton-Cambiar {
+
+left: 25em;
+
+}
+
+.Registro_Imagen {
+
+left: 6em;
+
+}
+
+
+
+
+}
+
+@media screen and (max-width: 749px) {
+
+  .Fondo-Blanco{
+  
+  margin-top: 60%;
+  
+  width: 40em;
+  
+    }
+  .Insertar-Primero,
+  .Insertar-Segundo,
+  .Insertar-Tercero {
+  
+  left: 25em;
+  
+  
+  
+  }
+  
+  .Boton-Siguiente {
+  
+  
+  left: 23em;
+  
+  }
+
+  .Boton-Codigo{
+
+    left: 22.7em;
+  }
+
+  .Boton-Cambiar {
+
+    left: 21.5em;
+    
+    }
+    .Boton-Regresar{
+
+      left: 24.0em;
+    
+    }
+    
+  
+  .Registro_Imagen {
+  
+  left: 4em;
+  
+  }
+  
+  
+  
+  
+  }
+
+
+  @media screen and (max-width: 652px) {
+
+    .Fondo-Blanco{
+    
+    margin-top: 70%;
+    
+    width: 35em;
+    
+      }
+    .Insertar-Primero,
+    .Insertar-Segundo,
+    .Insertar-Tercero {
+    
+    left: 20em;
+    
+    
+    
+    }
+    
+    .Boton-Siguiente {
+    
+    
+    left: 19.5em;
+    
+    }
+
+    .Boton-Codigo{
+
+      left: 18.4em;
+    }
+
+    .Boton-Regresar{
+
+      left: 19.4em;
+    }
+
+    .Boton-Cambiar {
+
+    left: 17.2em;
+      
+    }
+    
+    .Registro_Imagen {
+    
+    left: 2em;
+    
+    }
+    
+    
+    
+    
+    }
+
+
+
+@media screen and (max-width: 574px) {
+
+.Fondo-Blanco{
+      
+  margin-top: 50em;
+      
+  width: 25em;
+
+  height: 50em;
+      
+}
+.Insertar-Primero,
+.Insertar-Segundo,
+.Insertar-Tercero {
+      
+  left: 5.5em;
+  top: 13em;
+      
+      
+}
+      
+.Boton-Siguiente{
+      
+      
+  left: 7em;
+  top: 14em;
+      
+}
+
+.Boton-Codigo{
+
+  left: 5.7em;
+  top: 14em;
+}
+
+.Boton-Regresar{
+
+  left: 7.3em;
+  top: 21em;
+}
+
+.Boton-Cambiar {
+
+  top: 14em;
+  left: 4.5em;
+    
+  }
+  
+
+      
+.Registro_Imagen {
+      
+  left: 6em;
+      
+}
+      
+      
+      
+      
+}
+
+
+@media screen and (max-width: 425px) {
+
+  .Fondo-Blanco{
+        
+    margin-top: 50em;
+        
+    width: 20em;
+  
+    height: 50em;
+        
+  }
+  .Insertar-Primero,
+  .Insertar-Segundo,
+  .Insertar-Tercero {
+        
+    left: 2.5em;
+    top: 13em;
+        
+        
+  }
+        
+  .Boton-Siguiente {
+        
+        
+    left: 4.5em;
+    top: 14em;
+        
+  }
+
+  .Boton-Codigo{
+
+    left: 3em;
+    top: 14em;
+  }
+
+  .Boton-Regresar{
+
+    left: 4.5em;
+    top: 22em;
+  }
+
+  .Boton-Cambiar {
+
+    top: 14em;
+    left: 2em;
+      
+    }
+    
+        
+  .Registro_Imagen {
+        
+    left: 4em;
+        
+  }
+        
+        
+        
+        
+  }

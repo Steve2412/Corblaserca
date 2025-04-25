@@ -1,0 +1,45 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.footer {
+    text-align: center;
+    background-color: rgb(65, 59, 59);
+    height: 65px;
+}
+.name {
+    position: absolute;
+    top: 93vh;
+    left: 10vh;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+}
+.date {
+    position: absolute;
+    top: 93vh;
+    left: 50vh;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+
+}
+
+.git {
+    position: absolute;
+    top: 93vh;
+    left: 150vh;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+}
+
+.git {
+    text-decoration: none;
+}
+
+.git:hover {
+    color: rgb(148, 24, 24);
+}
+

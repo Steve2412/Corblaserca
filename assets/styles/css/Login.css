@@ -1,0 +1,316 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arimo;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.Fondo-Blanco {
+  background-color: #24252a;
+  width: 55em;
+  height: 32em;
+  margin-top: 5%;
+  margin-bottom: 7%;
+  position: relative;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5%;
+}
+
+.logo {
+  top: 0.1px;
+  left: 0.2em;
+}
+
+.Login-Texto {
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+
+.Entrada-Datos,
+.Formulario {
+  background-color: transparent;
+}
+
+#Cedula,
+#Contraseña {
+  display: flex;
+  position: relative;
+  left: 39em;
+  top: 50px;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+    background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  height: 4em;
+  width: 20em;
+
+  margin-top: 20px;
+}
+:hover {
+  border-color: #ccc;
+}
+:focus {
+  border-color: #9147ff;
+  background: #fff;
+}
+
+.Boton-Iniciar {
+  display: flex;
+  position: relative;
+  top: 120px;
+  left: 36em;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  justify-content: center;
+  padding: 0 56px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Boton-Iniciar-apagado {
+  display: flex;
+  position: relative;
+  top: 120px;
+  left: 36em;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  justify-content: center;
+  padding: 0 56px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7px;
+  background-color: #575757;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Boton-Registrar {
+  display: flex;
+  position: relative;
+  top: 150px;
+  left: 36em;
+  width: 13em;
+  outline: 0;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  padding: 0 56px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7px;
+  background-color: #0070f3;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.Boton-Registrar:hover,
+.Boton-Iniciar:hover {
+  background: rgba(0, 118, 255, 0.9);
+  box-shadow: 0 6px 20px rgb(0 118 255 / 23%);
+}
+
+.Recuperar {
+  position: relative;
+  left: 34em;
+  bottom: 30px;
+  background-color: transparent;
+}
+
+.Imagen-Login {
+  display: flex;
+  position: relative;
+  bottom: 12.5em;
+  left: 7em;
+  width: 19em;
+}
+
+img {
+  background-color: transparent;
+  width: 200px;
+  position: relative;
+  right: 100px;
+  bottom: 100px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container-foo,
+.row,
+.footer-col {
+  background-color: #24252a;
+}
+
+@media screen and (max-width: 900px) {
+  .Fondo-Blanco {
+    width: 90%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+  }
+
+  .Imagen-Login {
+    left: 10%;
+  }
+
+  #Cedula,
+  #Contraseña {
+    left: 58%;
+  }
+
+  .Recuperar {
+    left: 58%;
+  }
+
+  .Boton-Iniciar,
+  .Boton-Registrar,.Boton-Iniciar-apagado {
+    left: 62%;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .Fondo-Blanco {
+    width: 80%;
+    margin-top: 15%;
+  }
+
+  .Imagen-Login {
+    width: 250px;
+
+    height: 300px;
+
+    left: 5%;
+  }
+
+  #Cedula,
+  #Contraseña {
+    left: 50%;
+
+    width: 18em;
+  }
+
+  .Recuperar {
+    left: 50%;
+  }
+
+  .Boton-Iniciar,
+  .Boton-Registrar,.Boton-Iniciar-apagado {
+    left: 54%;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .Fondo-Blanco {
+    width: 20em;
+    margin-top: 15%;
+    height: 35em;
+  }
+
+  .Imagen-Login {
+    width: 150px;
+
+    height: 200px;
+
+    left: 30%;
+
+    bottom: 16em;
+  }
+
+  #Cedula,
+  #Contraseña {
+    left: 10%;
+    top: 14em;
+    width: 18em;
+    height: 3.5em;
+  }
+
+  .Recuperar {
+    left: 10%;
+    top: 7em;
+  }
+
+  .Boton-Iniciar,.Boton-Iniciar-apagado {
+    left: 19%;
+    top: 15em;
+  }
+
+  .Boton-Registrar {
+    left: 19%;
+    top: 16em;
+  }
+}
+
+@media screen and (max-width: 326px) {
+  .Fondo-Blanco {
+    width: 17em;
+    margin-top: 15%;
+    height: 35em;
+  }
+
+  .Imagen-Login {
+    width: 150px;
+
+    height: 200px;
+
+    left: 25%;
+
+    bottom: 16em;
+  }
+
+  #Cedula,
+  #Contraseña {
+    left: 4%;
+    top: 14em;
+    width: 18em;
+    height: 3.5em;
+  }
+
+  .Recuperar {
+    left: 4%;
+    top: 7em;
+  }
+
+  .Boton-Iniciar {
+    left: 13%;
+    top: 15em;
+  }
+
+  .Boton-Registrar {
+    left: 13%;
+    top: 16em;
+  }
+}
