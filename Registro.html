@@ -1,139 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Registro</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="assets/styles/css/Registro.css">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/styles/css/footerdef.css">
-  <link rel="stylesheet" href="assets/styles/css/Navbar.css">
-  <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Registro</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="assets/styles/css/Registro.css">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/styles/css/footerdef.css">
+    <link rel="stylesheet" href="assets/styles/css/Navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-
 <body>
-  <div class="menu-cont">
-    <header>
-      <nav class="navbar">
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-          <i class="fa-solid fa-bars"></i>
-        </label>
-        <a href="index.html" class="enlace">
-          <img class="logo" src="assets/img/logo.png" />
-        </a>
-        <h1 class="brand"><span class="color-change">CORBLA</span>SERCA</h1>
-        <ul class="elements">
-          <li class="element"><a href="index.html" class="a-menu">Inicio</a></li>
-          <li class="element"><a href="cursoslanding.html" class="a-menu">Cursos</a></li>
-          <li class="element"><a href="logeo.html" class="a-menu">Iniciar sesión</a></li>
-          <li class="element"><a href="metodosPago.html" class="a-menu">Métodos de pago</a></li>
-          <li class="element"><a href="acercaDe.html" class="a-menu">Acerca de nosotros</a></li>
-          <li class="element"><a href="faq.html" class="a-menu">FAQ</a></li>
-        </ul>
-      </nav>
-    </header>
-  </div>
-  <br>
-  <br>
-
-
-  <div class="Fondo-Blanco">
-    <h1 class="Login-Texto"> Ingresa tus datos</h1>
-    <form class="Formulario" onsubmit="return false">
-      <img src="Images/register.png" class="Registro_Imagen">
-      <div class="Entrada-Datos-1">
-        <input type="text" placeholder="Nombre" onkeydown="return /[a-z]/i.test(event.key)" class="Insertar-Primero"
-          id="Nombre" name="Nombre" required></input>
-        <input type="text" placeholder="Apellido" onkeydown="return /[a-z]/i.test(event.key)" class="Insertar-Primero"
-          id="Apellido" name="Apellido"></input>
-        <input type="email" placeholder="Correo" class="Insertar-Primero" id="Correo" name="Correo"></input>
-        <input type="number" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*?)\..*/g, '$1');"
-          maxlength="10" inputMode="numeric" placeholder="Cédula" class="Insertar-Primero" id="Cedula"
-          name="Cedula"></input>
-        <label id="Texto-Genero">Seleccionar Género</label>
-        <div class="Genero">
-          <input type="radio" name="Genero" id="option-1" value="M" checked>
-          <input type="radio" name="Genero" id="option-2" value="F">
-          <label for="option-1" class="option option-1">
-            <div class="dot"></div>
-            <span id="Hombre">Hombre</span>
-          </label>
-          <label for="option-2" class="option option-2">
-            <div class="dot"></div>
-            <span id="Mujer">Mujer</span>
-          </label>
-        </div>
+    <div class="menu-cont">
+        <header>
+          <nav class="navbar">
+            <input type="checkbox" id="check" >
+            <label for="check" class="checkbtn">
+              <i class="fa-solid fa-bars"></i>
+            </label>
+            <a href="index.html" class="enlace">
+              <img class="logo" src="assets/img/logo.png" />
+            </a>          
+            <h1 class="brand"><span class="color-change">CORBLA</span>SERCA</h1>
+            <ul class="elements">
+              <li class="element"><a href="index.html" class="a-menu">Inicio</a></li>
+              <li class="element"><a href="cursoslanding.html" class="a-menu">Cursos</a></li>
+              <li class="element"><a href="logeo.php" class="a-menu">Iniciar sesión</a></li>
+              <li class="element"><a href="metodosPago.html" class="a-menu">Métodos de pago</a></li>
+              <li class="element"><a href="acercaDe.html" class="a-menu">Acerca de nosotros</a></li>
+              <li class="element"><a href="faq.html" class="a-menu">FAQ</a></li>
+            </ul>
+          </nav>
+        </header>
       </div>
-      <button class="Boton-Siguiente" type="button" onclick="fun_siguiente()">Siguiente</button>
-      <form class="Formulario" method="POST" onsubmit="return false">
-        <div class="Entrada-Datos-2">
+      <br>
+      <br>
 
-          <input type="text" placeholder="Dirección" class="Insertar-Segundo" id="Direccion" name="Direccion"></input>
-          <input type="text" maxlength="12"
-            oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*?)\..*/g, '$1');" inputMode="numeric"
-            placeholder="Teléfono xxxx-xxxxxxx" class="Insertar-Segundo" id="Telefono" name="Telefono"></input>
-          <input type="password" placeholder="Contraseña" maxlength="16" class="Insertar-Segundo" id="Contra_1"
-            name="Contra"></input>
-          <input type="password" placeholder="Repetir Contraseña" maxlength="16" class="Insertar-Segundo"
-            id="Contra_2"></input>
-          <label id="Texto-Fecha">Fecha de nacimiento</label>
-          <input type="date" class="Fecha-Insertar" max="2023-12-31" name="Fecha"></input>
 
+        <div class="Fondo-Blanco"> 
+            <h1 class="Login-Texto"> Ingresa tus datos</h1>
+                <form class="Formulario" onsubmit="return false">
+                    <img src="Images/register.png" class="Registro_Imagen">
+                    <div  class="Entrada-Datos-1">
+                        <input type="text" placeholder="Nombre" onkeydown="return /[a-z]/i.test(event.key)" class="Insertar-Primero" id="Nombre" name="Nombre" required></input>
+                        <input type="text" placeholder="Apellido" onkeydown="return /[a-z]/i.test(event.key)" class="Insertar-Primero" id="Apellido" name="Apellido"></input>
+                        <input type="email" placeholder="Correo" class="Insertar-Primero" id="Correo" name="Correo"></input>
+                        <input type="number" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10" inputMode="numeric" placeholder="Cédula" class="Insertar-Primero" id="Cedula" name="Cedula"></input>
+                        <label id="Texto-Genero">Seleccionar Género</label>
+                        <div class="Genero">
+                            <input type="radio" name="Genero" id="option-1" value="M" checked>
+                            <input type="radio" name="Genero" id="option-2" value="F">
+                              <label for="option-1" class="option option-1">
+                                <div class="dot"></div>
+                                 <span id="Hombre">Hombre</span>
+                                 </label>
+                              <label for="option-2" class="option option-2">
+                                <div class="dot"></div>
+                                 <span id="Mujer">Mujer</span>
+                              </label>
+                        </div>
+                    </div>
+                    <button class="Boton-Siguiente" type="button" onclick="fun_siguiente()">Siguiente</button>
+                    <form class="Formulario" method="POST" onsubmit="return false">
+                        <div class="Entrada-Datos-2">
+                            
+                            <input type="text" placeholder="Dirección" class="Insertar-Segundo" id="Direccion" name="Direccion" ></input>
+                            <input type="text" maxlength="12" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*?)\..*/g, '$1');" inputMode="numeric" placeholder="Teléfono xxxx-xxxxxxx" class="Insertar-Segundo" id="Telefono" name="Telefono"></input>
+                            <input type="password" placeholder="Contraseña" maxlength="16" class="Insertar-Segundo" id="Contra_1" name="Contra"></input>
+                            <input type="password" placeholder="Repetir Contraseña" maxlength="16" class="Insertar-Segundo" id="Contra_2"></input>    
+                            <label id="Texto-Fecha">Fecha de nacimiento</label>
+                            <input type="date" class="Fecha-Insertar" max="2023-12-31" name="Fecha"></input>
+                       
+                          </div>
+                        <button class="Boton-Regresar" id="Regreso" onclick="fun_atras()">Regresar</button>
+                        <button type="submit" class="Boton-Registrarse" onclick="registrar()">Registrarse</button>
+                    
+                    </form>
+                
         </div>
-        <button class="Boton-Regresar" id="Regreso" onclick="fun_atras()">Regresar</button>
-        <button type="submit" class="Boton-Registrarse" onclick="registrar()">Registrarse</button>
-
-      </form>
-
-  </div>
-  <div id="res"></div>
-  <script src="Scripts/registro.js"></script>
+        <div id="res"></div>
+        <script src="Scripts/registro.js" ></script>
 
 
 
-  <footer class="footer">
-    <div class="container-foo">
-      <div class="row">
-        <div class="footer-col">
-          <h4>Compañía</h4>
-          <ul class="ul-foo">
-            <li><a href="acercaDe.html" class="a-foo">Sobre nosotros</a></li>
-            <li><a href="cursoslanding.html" class="a-foo">Cursos</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Obtener ayuda</h4>
-          <ul class="ul-foo">
-            <li><a href="faq.html" class="a-foo">FAQ</a></li>
-            <li><a href="logeo.html" class="a-foo">Reportar pago</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Registrarse</h4>
-          <ul class="ul-foo">
-            <li><a href="registro.html" class="a-foo">Registrarse</a></li>
-            <li><a href="logeo.html" class="a-foo">Iniciar Sesión</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Síguenos</h4>
-          <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=100095263480479&mibextid=ZbWKwL" class="a-foo"><i
-                class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/corblacerca_edu/?igshid=MzNlNGNkZWQ4Mg%3D%3D" class="a-foo"><i
-                class="fab fa-instagram"></i></a>
-            <a href="https://api.whatsapp.com/send?phone=584149664100" class="a-foo"><i class="fab fa-whatsapp"></i></a>
+        <footer class="footer">
+          <div class="container-foo">
+            <div class="row">
+              <div class="footer-col">
+                <h4>Compañía</h4>
+                <ul class="ul-foo">
+                  <li><a href="acercaDe.html" class="a-foo">Sobre nosotros</a></li>
+                  <li><a href="cursoslanding.html" class="a-foo">Cursos</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Obtener ayuda</h4>
+                <ul class="ul-foo">
+                  <li><a href="faq.html" class="a-foo">FAQ</a></li>
+                  <li><a href="logeo.php" class="a-foo">Reportar pago</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Registrarse</h4>
+                <ul class="ul-foo">
+                  <li><a href="registro.html" class="a-foo">Registrarse</a></li>
+                  <li><a href="logeo.php" class="a-foo">Iniciar Sesión</a></li>
+                </ul>
+              </div>
+            <div class="footer-col">
+              <h4>Síguenos</h4>
+              <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=100095263480479&mibextid=ZbWKwL" class="a-foo"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/corblacerca_edu/?igshid=MzNlNGNkZWQ4Mg%3D%3D" class="a-foo"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=584149664100" class="a-foo"><i class="fab fa-whatsapp"></i></a>
+              </div>
+            </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+        </footer>
 
-</body>
+</body>    
 
 </html>
