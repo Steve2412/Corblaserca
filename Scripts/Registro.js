@@ -24,9 +24,9 @@ Insertar_Telefono.addEventListener("keyup", function (e) {
   }
 });
 
-Insertar_Cedula.addEventListener('input', function () {
-  if (this.value.length > 10)
-    this.value = this.value.slice(0, 10);
+Insertar_Cedula.addEventListener('input',function(){
+  if (this.value.length > 10) 
+     this.value = this.value.slice(0,10); 
 })
 
 
@@ -114,11 +114,39 @@ function registrar() {
     alert("Debe Incluir una Numero");
   } else if (Insertar_Contra_1.value !== Insertar_Contra_2.value) {
     alert("Las contraseñas no concuerdan");
-  } else if (Difference_In_Time < "6574" || Insertar_Fecha.value < "1920-01-01") {
+  } else if(Difference_In_Time<"6574"||Insertar_Fecha.value<"1920-01-01"){
     alert("No puedes utilizar esa fecha como tu fecha de nacimiento")
   } else {
+    var datos = new FormData(formulario);
+    console.log(datos.get("Nombre"));
+    console.log(datos.get("Apellido"));
+    console.log(datos.get("Correo"));
+    console.log(datos.get("Cedula"));
+    console.log(datos.get("Genero"));
+    console.log(datos.get("Direccion"));
+    console.log(datos.get("Telefono"));
+    console.log(datos.get("Contra"));
+    console.log(datos.get("Fecha"));
 
-    window.alert("Registro Exitoso");
-    window.location.href = "logeo.html";
+    fetch("php/registrar.php", {
+      method: "POST",
+      body: datos,
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data === "1") {
+          alert("Ya existe el usuario");
+        }else if(data=="3"){
+          alert("Ya existe este correo para un usuario")
+        }else if(data === "8"){
+          alert("Hubo un error")
+        } else if (data === "2") {
+          alert(
+            "Se ha creado un nuevo usuario"
+          );
+          window.location.href = "../logeo.php";
+        }
+      });
   }
 }
