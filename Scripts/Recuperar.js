@@ -1,10 +1,3 @@
-var codigo = Math.random() * 1000000;
-codigo = Math.trunc(codigo)
-console.log(codigo);
-msg = "Tu codigo de recuperacion es: " + codigo;
-console.log(msg); 
-
-
 var Formulario = document.querySelector(".Formulario");
 var Insertar_Correo = document.querySelector("#Correo");
 var Insertar_Codigo = document.querySelector("#Codigo");
@@ -37,16 +30,9 @@ function fun_siguiente() {
       console.log(data);
       if (data === "2") {
         alert("No existe ningun usuario en la base de datos con este correo");
+      } else if (data === "8") {
+        alert("No se pudo enviar el correo, intentalo mas tarde");
       } else if (data == "1") {
-        Email.send({
-          SecureToken : "***ELIMINADO***",
-          To : Insertar_Correo.value,
-          From : "cursoscorblaserca@gmail.com",
-          Subject : "Codigo de recuperacion de cuenta",
-          Body : msg
-      }).then(
-        message => alert(message)
-      );
       alert(
         "Te has llegado un correo con un codigo, busca en la bandeja de entrada"
         
@@ -61,16 +47,26 @@ function fun_siguiente() {
 }
 
 function fun_Codigo() {
-
-  if(Insertar_Codigo.value==codigo){
-    alert("Codigo correcto");
-    el_second.style.display = "none";
-    el_third.style.display = "block";
-    boton_codigo.style.display = "none";
-    boton_cambiar.style.display = "block";
-  }else{
-    alert("Codigo incorrecto");
-  }
+  var datos = new FormData(Formulario);
+  fetch("php/verificar-codigo.php", {
+    method: "POST",
+    body: datos,
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data === "1") {
+        alert("Codigo correcto");
+        el_second.style.display = "none";
+        el_third.style.display = "block";
+        boton_codigo.style.display = "none";
+        boton_cambiar.style.display = "block";
+      } else if (data === "3") {
+        alert("El codigo ha caducado, solicita uno nuevo");
+        window.location.reload();
+      } else {
+        alert("Codigo incorrecto");
+      }
+    });
   }
 
   function fun_Cambio(){
@@ -91,8 +87,6 @@ function fun_Codigo() {
       alert("Las contraseñas no concuerdan");
     }else{
       var datos_2 = new FormData(Formulario);
-      console.log(datos_2.get("Correo"));
-      console.log(datos_2.get("Contra"));
       fetch("php/recuperar.php", {
         method: "POST",
         body: datos_2,
@@ -103,6 +97,9 @@ function fun_Codigo() {
           if (data === "1") {
             alert("Contraseña cambiada correctamente");
             //window.location.href = "login.html";
+          }else if(data === "3"){
+            alert("Debes verificar el codigo de nuevo");
+            window.location.reload();
           }else if(data === "8"){
             alert("Hubo un error")
           } else if (data === "2") {

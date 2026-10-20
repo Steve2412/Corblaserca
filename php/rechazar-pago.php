@@ -1,5 +1,7 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $id=$_GET['deleteid'];
 try {
 $pdo= $conectar->prepare("UPDATE notifipago SET estado_notifipago='Rechazado' WHERE id_notifipago=?");

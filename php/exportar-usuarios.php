@@ -3,9 +3,11 @@ date_default_timezone_set('America/Caracas');
 $currentDate = date('d-m-Y');
 $currentHour = date('H:i');
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 require_once '../dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
-extract($_POST);
+$submit = isset($_POST['submit']) ? $_POST['submit'] : null;
 
 if(isset($submit)){
     $query = "SELECT * FROM usuario";

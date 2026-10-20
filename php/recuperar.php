@@ -1,13 +1,24 @@
 <?php
+require_once __DIR__ . '/sesion.php';
 require "conexion.php";
-$correo = isset($_POST['Correo']) ? $_POST["Correo"] : "";
 $contra = isset($_POST['Contra']) ? $_POST["Contra"] : "";
+$recuperacion = isset($_SESSION['recuperacion']) ? $_SESSION['recuperacion'] : null;
+
+// Solo se cambia la contraseña del correo que verificó el código en esta misma sesión
+if(!$recuperacion || !$recuperacion['verificado'] || time() > $recuperacion['expira']){
+    echo json_encode("3");
+    exit;
+}
+
+if(strlen($contra) < 8 || strlen($contra) > 16){
+    echo json_encode("8");
+    exit;
+}
 
 try {
 $pdo= $conectar->prepare("UPDATE usuario SET contra_user = ? WHERE correo_user= ?");
-$pdo->bindParam(1,$contra);
-$pdo->bindParam(2,$correo);
-$pdo->execute();
+$pdo->execute([$contra, $recuperacion['correo']]);
+unset($_SESSION['recuperacion']);
 echo json_encode("1");
 } 
 

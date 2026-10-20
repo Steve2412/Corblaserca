@@ -26,6 +26,9 @@ The platform offers a variety of features to facilitate learning and course mana
 
 With this platform, we aim to provide an interactive and accessible learning experience for anyone interested in learning a new language.
 
+## Setup
+Copy `php/config.example.php` to `php/config.php` and fill in the database credentials and the SMTP.js token. `php/config.php` is ignored by git, so credentials never reach the repository.
+
 ---
 
 # Español
@@ -53,6 +56,9 @@ La plataforma ofrece una variedad de características para facilitar el aprendiz
 - **Respaldo de Base de Datos:** Genera un archivo de respaldo SQL para preservar toda la informacion.
 
 Con esta plataforma, buscamos brindar una experiencia de aprendizaje interactiva y accesible para todos aquellos interesados en aprender un nuevo idioma.
+
+## Configuración
+Copia `php/config.example.php` como `php/config.php` y rellena las credenciales de la base de datos y el token de SMTP.js. `php/config.php` está en `.gitignore`, así que las credenciales nunca llegan al repositorio.
 
 Here’s the adapted description for the README on GitHub in English:
 

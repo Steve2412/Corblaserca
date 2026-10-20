@@ -1,6 +1,12 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $cedula = isset($_POST['Cedula']) ? $_POST["Cedula"] : "";
+if(!ctype_digit((string) $cedula)){
+    echo json_encode("8");
+    exit;
+}
 $cedula = "V-".$cedula;
 $cursos = isset($_POST['Cursos']) ? $_POST["Cursos"] : "";
 $periodo = isset($_POST['Periodo']) ? $_POST["Periodo"] : "";
@@ -9,17 +15,17 @@ $estado = isset($_POST['Estado']) ? $_POST["Estado"] : "";
 
 try {
 
-$pdo = $conectar->prepare("SELECT * FROM usuario WHERE cedu_user ='$cedula'");
-$pdo->execute();
+$pdo = $conectar->prepare("SELECT * FROM usuario WHERE cedu_user = ?");
+$pdo->execute([$cedula]);
 $result = $pdo->fetchColumn();  
 
 if($result>0){
-    $pdo_2 = $conectar->prepare("SELECT Usuario_ID_user FROM usuario_has_cursos WHERE Usuario_ID_user  = '$cedula' AND  Cursos_ID_cur = '$cursos'");
-    $pdo_2->execute();
+    $pdo_2 = $conectar->prepare("SELECT Usuario_ID_user FROM usuario_has_cursos WHERE Usuario_ID_user  = ? AND  Cursos_ID_cur = ?");
+    $pdo_2->execute([$cedula, $cursos]);
     $result_2 = $pdo_2->fetchColumn();
 
-    $pdo_3 = $conectar->prepare("SELECT Usuario_ID_user FROM usuario_has_cursos WHERE Usuario_ID_user  = '$cedula' AND  estado_usuario_has_cursos = 'Activo'");
-    $pdo_3->execute();
+    $pdo_3 = $conectar->prepare("SELECT Usuario_ID_user FROM usuario_has_cursos WHERE Usuario_ID_user  = ? AND  estado_usuario_has_cursos = 'Activo'");
+    $pdo_3->execute([$cedula]);
     $result_3 = $pdo_3->fetchColumn();
 
     if($result_2>0) {

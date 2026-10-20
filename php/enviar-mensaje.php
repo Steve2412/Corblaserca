@@ -1,18 +1,19 @@
 <?php
 require "conexion.php";
-session_start();
+require_once __DIR__ . '/seguridad.php';
+$usuario = requerir_sesion();
 
-$usuario = $_SESSION['usuario'];
 try {
-$query = "SELECT * FROM usuario_has_cursos WHERE Usuario_ID_user = '$usuario'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+$pdo_1 = $conectar->prepare("SELECT * FROM usuario_has_cursos WHERE Usuario_ID_user = ?");
+$pdo_1->execute([$usuario]);
+$result = $pdo_1->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
 $Cursos_ID_cur = $row['Cursos_ID_cur'];
 $Rol_usuario = $row['Usuario_rol'];
 }
 
 
-$mensaje = isset($_POST['Mensaje']) ? $_POST["Mensaje"] : "";
+$mensaje = isset($_POST['Mensaje']) ? limpiar($_POST["Mensaje"]) : "";
 $fecha = date('Y-m-d H:i:s');
 
 $pdo= $conectar->prepare ("INSERT INTO foro (usuario_id_foro ,curso_id_foro ,mensaje_foro,fecha_mensaje_foro) 

@@ -33,11 +33,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Build static site
+        # Only publish static files: GitHub Pages can't run PHP and would serve the source code as plain text
+        run: |
+          mkdir _site
+          cp -r *.html curso.jpg assets Images Scripts _site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

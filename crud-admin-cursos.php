@@ -1,6 +1,6 @@
 <?php
 require "php/conexion.php";
-session_start();
+require_once __DIR__ . '/php/sesion.php';
 if(!isset($_SESSION['usuario'])){
   echo '<script language="javascript">
   window.location = "index.html"
@@ -9,6 +9,8 @@ if(!isset($_SESSION['usuario'])){
   session_destroy(); 
 }
 $usuario = $_SESSION['usuario'];
+require_once __DIR__ . '/php/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $query = "SELECT * FROM usuario_has_cursos WHERE Usuario_ID_user = '$usuario'"; 
 $result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
@@ -32,7 +34,7 @@ if($Rol_usuario=="Profesor"||$Rol_usuario=="Estudiante"){
 <body>
     <div class="container my-9">
         <form method="GET   ">
-            <input type="text" class="form-control me-2" id="getData" placeholder="Buscar curso" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>">
+            <input type="text" class="form-control me-2" id="getData" placeholder="Buscar curso" name="search" value="<?php if(isset($_GET['search'])){echo e($_GET['search']);}?>">
             <button class="btn btn-dark btn-sm"> Buscar</button>
         </form>
         <h2>Lista Cursos</h2>  
@@ -60,8 +62,9 @@ if($Rol_usuario=="Profesor"||$Rol_usuario=="Estudiante"){
                 
 
                 $filtervalues=$_GET['search'];
-                $query = "SELECT * FROM cursos WHERE CONCAT(ID_cur,nomb_cur,estado_cur) LIKE '%$filtervalues%'";
-                $result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+                $consulta = $conectar->prepare("SELECT * FROM cursos WHERE CONCAT(ID_cur,nomb_cur,estado_cur) LIKE ?");
+                $consulta->execute(['%' . $filtervalues . '%']);
+                $result = $consulta->fetchAll(PDO::FETCH_BOTH);
             
                     foreach ($result as $row){
                     echo"

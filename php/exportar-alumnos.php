@@ -2,8 +2,10 @@
 date_default_timezone_set('America/Caracas');
 $currentDate = date('d-m-Y');
 $currentHour = date('H:i');
-session_start();
-require "conexion.php"; 
+require_once __DIR__ . '/sesion.php';
+require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Profesor']); 
 $usuario = $_SESSION['usuario'];
 $query = "SELECT * FROM usuario WHERE cedu_user = '$usuario'"; 
 $result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
@@ -30,7 +32,7 @@ foreach ($result as $row){
 }
 require_once '../dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
-extract($_POST);
+$submit = isset($_POST['submit']) ? $_POST['submit'] : null;
 
 if(isset($submit)){
     $query = "SELECT * FROM usuario_has_cursos WHERE Usuario_rol='Estudiante'AND Cursos_ID_cur='$Cursos_ID_cur'";

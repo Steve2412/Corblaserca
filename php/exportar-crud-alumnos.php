@@ -2,24 +2,28 @@
 date_default_timezone_set('America/Caracas');
 $currentDate = date('d-m-Y');
 $currentHour = date('H:i');
-session_start();
-require "conexion.php"; 
+require_once __DIR__ . '/sesion.php';
+require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']); 
 $id=$_GET['exportarid']; 
 
-$query = "SELECT * FROM cursos WHERE ID_cur = '$id'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+$pdo_1 = $conectar->prepare("SELECT * FROM cursos WHERE ID_cur = ?");
+$pdo_1->execute([$id]);
+$result = $pdo_1->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
     $nomb_cur = $row['nomb_cur'];
 }
 
 require_once '../dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
-extract($_POST);
+$submit = isset($_POST['submit']) ? $_POST['submit'] : null;
 
 
 if(isset($submit)){
-    $query = "SELECT * FROM usuario_has_cursos WHERE Cursos_ID_cur='$id'";
-    $result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+    $pdo_2 = $conectar->prepare("SELECT * FROM usuario_has_cursos WHERE Cursos_ID_cur = ?");
+    $pdo_2->execute([$id]);
+    $result = $pdo_2->fetchAll(PDO::FETCH_BOTH);
     $html = '';
     $html .= '
         <h2 align="center">Alumnos de '.$nomb_cur.'</h2>

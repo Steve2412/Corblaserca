@@ -1,6 +1,8 @@
 <?php
 require "conexion.php";
-session_start();
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Profesor']);
+require_once __DIR__ . '/sesion.php';
 if(!isset($_SESSION['usuario'])){
   echo '<script language="javascript">
   window.location = "index.html"
@@ -33,8 +35,8 @@ foreach ($result as $row){
 
 
 $contenido = isset($_POST['Contenido']) ? $_POST["Contenido"] : "";
-$pdo= $conectar->prepare ("UPDATE cursos SET conte_text='$contenido' WHERE ID_cur = '$Cursos_ID_cur'");
-$pdo->execute();
+$pdo= $conectar->prepare ("UPDATE cursos SET conte_text=? WHERE ID_cur = ?");
+$pdo->execute([$contenido, $Cursos_ID_cur]);
 echo json_encode("2");
 
 } 

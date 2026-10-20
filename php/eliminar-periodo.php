@@ -1,5 +1,7 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 if(isset($_GET['deleteid'])){
     $id = $_GET['deleteid'];
 

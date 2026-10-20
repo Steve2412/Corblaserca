@@ -1,5 +1,7 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $cedula = isset($_POST['Cedula']) ? $_POST["Cedula"] : "";
 $nombre = isset($_POST['Nombre']) ? $_POST["Nombre"] : "";
 $apellido = isset($_POST['Apellido']) ? $_POST["Apellido"] : "";
@@ -12,9 +14,9 @@ $estado = isset($_POST['Estado']) ? $_POST["Estado"] : "";
 
 try {
 
-$pdo= $conectar->prepare ("UPDATE usuario SET cedu_user = '$cedula',nomb_user = '$nombre',apelli_user = '$apellido',correo_user = '$correo',
-dirre_user = '$direccion',numer_user = '$telefono',fech_naci_user = '$fecha',sexo_user = '$gen', estado_user = '$estado' WHERE cedu_user = '$cedula'");
-$pdo->execute();
+$pdo= $conectar->prepare ("UPDATE usuario SET nomb_user = ?,apelli_user = ?,correo_user = ?,
+dirre_user = ?,numer_user = ?,fech_naci_user = ?,sexo_user = ?, estado_user = ? WHERE cedu_user = ?");
+$pdo->execute([limpiar($nombre),limpiar($apellido),limpiar($correo),limpiar($direccion),limpiar($telefono),$fecha,$gen,$estado,$cedula]);
 echo json_encode("2");
 } 
 

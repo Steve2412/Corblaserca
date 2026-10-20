@@ -1,7 +1,8 @@
 <?php
-session_start();
-$usuario = $_SESSION['usuario'];
+require_once __DIR__ . '/sesion.php';
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+$usuario = requerir_sesion();
 
 $monto = isset($_POST['Monto']) ? $_POST["Monto"] : "";
 $banco = isset($_POST['Banco']) ? $_POST["Banco"] : "";
@@ -14,12 +15,12 @@ $motivo = isset($_POST['Motivo']) ? $_POST["Motivo"] : "";
 try {
 $pdo= $conectar->prepare ("INSERT INTO notifipago (monto_notifipago,banco_notifipago,cedu_titular_notifipago,fecha_notifipago,referencia_notifipago,motivo_notifipago,usuario_notifipago)
 VALUES (?,?,?,?,?,?,?   )");
-$pdo->bindParam(1,$monto);
-$pdo->bindParam(2,$banco);
+$pdo->bindValue(1,limpiar($monto));
+$pdo->bindValue(2,limpiar($banco));
 $pdo->bindParam(3,$ced_titu);
 $pdo->bindParam(4,$fecha_trans);
-$pdo->bindParam(5,$num_trans);
-$pdo->bindParam(6,$motivo);
+$pdo->bindValue(5,limpiar($num_trans));
+$pdo->bindValue(6,limpiar($motivo));
 $pdo->bindParam(7,$usuario);
 $pdo->execute();
 

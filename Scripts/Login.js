@@ -24,8 +24,6 @@ function Iniciar_Sesion() {
   } else {
     //alert("Iniciar sesion");
     var datos = new FormData(formulario);
-    console.log(datos.get("Cedula"));
-    console.log(datos.get("Contra"));
     fetch("php/login.php", {
       method: "POST",
       body: datos,
@@ -41,6 +39,8 @@ function Iniciar_Sesion() {
 
 
           }
+        }else if(data === "9"){
+          alert("Demasiados intentos, espera unos segundos para iniciar sesion");
         }else if(data === "8"){
           alert("Hubo un error")
         } else if (data == "1") {

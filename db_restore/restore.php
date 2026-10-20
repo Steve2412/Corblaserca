@@ -1,5 +1,8 @@
 <?php
-	session_start();
+	require_once __DIR__ . '/../php/sesion.php';
+	require __DIR__ . '/../php/conexion.php';
+	require_once __DIR__ . '/../php/seguridad.php';
+	requerir_rol($conectar, ['Administrador']);
 
 	//include our function
 	include 'function.php';
@@ -12,10 +15,15 @@
 		$password = $_POST['password'];
 		$dbname = $_POST['dbname'];
 
-		//moving the uploaded sql file
+		// Solo se aceptan archivos .sql, y se leen desde la carpeta temporal de PHP
+		// (nunca se copian a una carpeta pública donde podrían ejecutarse)
 		$filename = $_FILES['sql']['name'];
-		move_uploaded_file($_FILES['sql']['tmp_name'],'upload/' . $filename);
-		$file_location = 'upload/' . $filename;
+		if(strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'sql' || !is_uploaded_file($_FILES['sql']['tmp_name'])){
+			$_SESSION['error'] = 'Solo se permiten archivos .sql';
+			header('location:index.php');
+			exit;
+		}
+		$file_location = $_FILES['sql']['tmp_name'];
 
 		//restore database using our function
 		$restore = restore($server, $username, $password, $dbname, $file_location);

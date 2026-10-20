@@ -1,6 +1,6 @@
 <?php
 require "conexion.php";
-session_start();
+require_once __DIR__ . '/sesion.php';
 if(!isset($_SESSION['usuario'])){
   echo '<script language="javascript">
   window.location = "index.html"
@@ -42,7 +42,7 @@ $currentDate = date('d-m-Y');
 $currentHour = date('H:i');
 require_once '../dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
-extract($_POST);
+$submit = isset($_POST['submit']) ? $_POST['submit'] : null;
 
 if(isset($submit)){
     $html = '';

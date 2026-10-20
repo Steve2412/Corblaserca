@@ -1,9 +1,13 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+$usuario = requerir_sesion();
 $id=$_GET['exportarid']; 
 
-$query = "SELECT * FROM notifipago WHERE id_notifipago = '$id'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+$usuario_notifipago = null;
+$pdo_1 = $conectar->prepare("SELECT * FROM notifipago WHERE id_notifipago = ?");
+$pdo_1->execute([$id]);
+$result = $pdo_1->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
     $monto_notifipago = $row['monto_notifipago'];
     $banco_notifipago = $row['banco_notifipago'];
@@ -15,8 +19,14 @@ foreach ($result as $row){
 
 }
 
-$query = "SELECT * FROM usuario WHERE cedu_user = '$usuario_notifipago'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+// Solo el dueño del pago o un administrador pueden ver el recibo
+if($usuario_notifipago !== $usuario){
+    requerir_rol($conectar, ['Administrador']);
+}
+
+$pdo_2 = $conectar->prepare("SELECT * FROM usuario WHERE cedu_user = ?");
+$pdo_2->execute([$usuario_notifipago]);
+$result = $pdo_2->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
     $Nombre = $row['nomb_user'];
     $Apellido = $row['apelli_user'];
@@ -30,7 +40,7 @@ $currentHour = date('H:i');
 require "conexion.php";
 require_once '../dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
-extract($_POST);
+$submit = isset($_POST['submit']) ? $_POST['submit'] : null;
 
 if(isset($submit)){
     $html = '<head> <style>

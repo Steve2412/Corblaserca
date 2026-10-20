@@ -80,7 +80,6 @@ function registrar() {
     console.log(datos.get("Genero"));
     console.log(datos.get("Direccion"));
     console.log(datos.get("Telefono"));
-    console.log(datos.get("Contra"));
     console.log(datos.get("Fecha"));
 
     fetch("php/profile-edit-crud.php", {

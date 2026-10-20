@@ -1,6 +1,7 @@
 <?php
 require "conexion.php";
-session_start();
+require_once __DIR__ . '/seguridad.php';
+require_once __DIR__ . '/sesion.php';
 if(!isset($_SESSION['usuario'])){
   echo '<script language="javascript">
   window.location = "index.html"
@@ -18,9 +19,9 @@ $telefono = isset($_POST['Telefono']) ? $_POST["Telefono"] : "";;
 $fecha = isset($_POST['Fecha']) ? $_POST["Fecha"] : "";
 $gen = isset($_POST['Genero']) ? $_POST["Genero"] : "";
 
-$pdo= $conectar->prepare ("UPDATE usuario SET nomb_user = '$nombre',apelli_user = '$apellido',correo_user = '$correo', 
-dirre_user = '$direccion',numer_user = '$telefono',fech_naci_user = '$fecha',sexo_user = '$gen' WHERE cedu_user = '$usuario'");
-$pdo->execute();
+$pdo= $conectar->prepare ("UPDATE usuario SET nomb_user = ?,apelli_user = ?,correo_user = ?, 
+dirre_user = ?,numer_user = ?,fech_naci_user = ?,sexo_user = ? WHERE cedu_user = ?");
+$pdo->execute([limpiar($nombre),limpiar($apellido),limpiar($correo),limpiar($direccion),limpiar($telefono),$fecha,$gen,$usuario]);
 echo json_encode("2");
 } 
 

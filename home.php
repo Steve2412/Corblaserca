@@ -1,6 +1,6 @@
 <?php
 require "php/conexion.php";
-session_start();
+require_once __DIR__ . '/php/sesion.php';
 if(!isset($_SESSION['usuario'])){
   echo '<script language="javascript">
   window.location = "index.html"

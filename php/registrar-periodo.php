@@ -1,5 +1,7 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $id = isset($_POST['ID']) ? $_POST["ID"] : "";
 $nombre = isset($_POST['Nombre']) ? $_POST["Nombre"] : "";
 $fecha_1 = isset($_POST['Fecha-Inicio']) ? $_POST["Fecha-Inicio"] : "";

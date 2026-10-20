@@ -1,0 +1,11 @@
+# Credenciales locales
+php/config.php
+
+# Copias de seguridad y subidas de la base de datos
+composer/backup/
+db_restore/upload/
+*.sql
+
+# Basura del sistema
+Thumbs.db
+.DS_Store

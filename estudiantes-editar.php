@@ -1,6 +1,6 @@
 <?php
 require "php/conexion.php";
-session_start();
+require_once __DIR__ . '/php/sesion.php';
 if(!isset($_SESSION['usuario'])){
   echo '<script language="javascript">
   window.location = "index.html"
@@ -10,6 +10,8 @@ if(!isset($_SESSION['usuario'])){
 }
 
 $usuario = $_SESSION['usuario'];
+require_once __DIR__ . '/php/seguridad.php';
+requerir_rol($conectar, ['Profesor']);
 $query = "SELECT * FROM usuario WHERE cedu_user = '$usuario'"; 
 $result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
@@ -52,15 +54,17 @@ foreach ($result as $row){
 }
 
 $editar=$_GET['editarid']; 
-$query = "SELECT * FROM usuario WHERE cedu_user = '$editar'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+$consulta = $conectar->prepare("SELECT * FROM usuario WHERE cedu_user = ?");
+$consulta->execute([$editar]);
+$result = $consulta->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
     $Nombre_estudiante_editar = $row['nomb_user'];
     $Apellido_estudiante_editar = $row['apelli_user'];
    }
 
-$query = "SELECT * FROM usuario_has_cursos WHERE Usuario_ID_user = '$editar'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+$consulta = $conectar->prepare("SELECT * FROM usuario_has_cursos WHERE Usuario_ID_user = ?");
+$consulta->execute([$editar]);
+$result = $consulta->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
     $calificacion_user_estudiante_editar = $row['calificacion_user'];
 }

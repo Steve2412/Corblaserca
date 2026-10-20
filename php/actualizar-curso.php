@@ -1,5 +1,7 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $id_o = isset($_POST['id_o']) ? $_POST["id_o"] : "";
 $id = isset($_POST['ID']) ? $_POST["ID"] : "";
 $nombre = isset($_POST['Nombre']) ? $_POST["Nombre"] : "";
@@ -11,9 +13,9 @@ $contenido = isset($_POST['Contenido']) ? $_POST["Contenido"] : "";
 $estado = isset($_POST['Estado']) ? $_POST["Estado"] : "";
 
 try {
-$pdo= $conectar->prepare ("UPDATE cursos SET ID_cur = '$id',nomb_cur = '$nombre',horar_cur = '$horas',prec_cur = '$precio',
-cupos_cur_min = '$cupo_min', cupos_cur_max = '$cupo_max' ,conte_text='$contenido',estado_cur='$estado' WHERE ID_cur = '$id_o'");
-$pdo->execute();
+$pdo= $conectar->prepare ("UPDATE cursos SET ID_cur = ?,nomb_cur = ?,horar_cur = ?,prec_cur = ?,
+cupos_cur_min = ?, cupos_cur_max = ? ,conte_text=?,estado_cur=? WHERE ID_cur = ?");
+$pdo->execute([$id,$nombre,$horas,$precio,$cupo_min,$cupo_max,$contenido,$estado,$id_o]);
 echo json_encode("2");
 
 } 

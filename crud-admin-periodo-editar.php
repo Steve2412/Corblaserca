@@ -1,7 +1,7 @@
 <?php
 require "php/conexion.php";
 require "php/conexion.php";
-session_start();
+require_once __DIR__ . '/php/sesion.php';
 if(!isset($_SESSION['usuario'])){
   echo '<script language="javascript">
   window.location = "index.html"
@@ -10,6 +10,8 @@ if(!isset($_SESSION['usuario'])){
   session_destroy(); 
 }
 $usuario = $_SESSION['usuario'];
+require_once __DIR__ . '/php/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $query = "SELECT * FROM usuario_has_cursos WHERE Usuario_ID_user = '$usuario'"; 
 $result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
@@ -23,8 +25,9 @@ if($Rol_usuario=="Profesor"||$Rol_usuario=="Estudiante"){
 
 
 $id=$_GET['editarid']; 
-$query = "SELECT * FROM periodo WHERE ID_peri = '$id'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+$consulta = $conectar->prepare("SELECT * FROM periodo WHERE ID_peri = ?");
+$consulta->execute([$id]);
+$result = $consulta->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
     $ID = $row['ID_peri'];
     $Nombre = $row['nomb_peri'];

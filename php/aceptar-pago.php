@@ -1,20 +1,24 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $id=$_GET['editarid'];
 
 try {
 $pdo= $conectar->prepare("UPDATE notifipago SET estado_notifipago='Procesado' WHERE id_notifipago=?");
 $pdo->execute([$id]);
 
-$query = "SELECT * FROM notifipago WHERE id_notifipago = '$id'"; 
-$result = $conectar->query($query)->fetchAll(PDO::FETCH_BOTH);
+$pdo_1 = $conectar->prepare("SELECT * FROM notifipago WHERE id_notifipago = ?");
+$pdo_1->execute([$id]);
+$result = $pdo_1->fetchAll(PDO::FETCH_BOTH);
 foreach ($result as $row){
     $Cedu = $row['usuario_notifipago'];
 }
 
 
-$query_2 = "SELECT * FROM notifipago WHERE usuario_notifipago  = '$Cedu' AND (estado_notifipago='Rechazado' OR estado_notifipago='Pendiente' );"; 
-$result_2 = $conectar->query($query_2)->fetchColumn(PDO::FETCH_BOTH);
+$pdo_3 = $conectar->prepare("SELECT COUNT(*) FROM notifipago WHERE usuario_notifipago = ? AND (estado_notifipago='Rechazado' OR estado_notifipago='Pendiente')");
+$pdo_3->execute([$Cedu]);
+$result_2 = $pdo_3->fetchColumn();
 
 if($result_2>0){
     echo '<script language="javascript">alert("Reporte aceptado correctamente");</script>';

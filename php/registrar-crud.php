@@ -1,6 +1,12 @@
 <?php
 require "conexion.php";
+require_once __DIR__ . '/seguridad.php';
+requerir_rol($conectar, ['Administrador']);
 $cedula = isset($_POST['Cedula']) ? $_POST["Cedula"] : "";
+if(!ctype_digit((string) $cedula)){
+    echo json_encode("8");
+    exit;
+}
 $cedula = "V-".$cedula;
 $nombre = isset($_POST['Nombre']) ? $_POST["Nombre"] : "";
 $apellido = isset($_POST['Apellido']) ? $_POST["Apellido"] : "";
@@ -30,12 +36,12 @@ $estado = isset($_POST['Estado']) ? $_POST["Estado"] : "";
         $pdo= $conectar->prepare ("INSERT INTO usuario (cedu_user,nomb_user,apelli_user,correo_user,contra_user,dirre_user,numer_user,fech_naci_user,sexo_user,estado_user) 
         VALUES (?,?,?,?,?,?,?,?,?,?)");
         $pdo->bindParam(1,$cedula);
-        $pdo->bindParam(2,$nombre);
-        $pdo->bindParam(3,$apellido);
-        $pdo->bindParam(4,$correo);
+        $pdo->bindValue(2,limpiar($nombre));
+        $pdo->bindValue(3,limpiar($apellido));
+        $pdo->bindValue(4,limpiar($correo));
         $pdo->bindParam(5,$contra);
-        $pdo->bindParam(6,$direccion);
-        $pdo->bindParam(7,$telefono);
+        $pdo->bindValue(6,limpiar($direccion));
+        $pdo->bindValue(7,limpiar($telefono));
         $pdo->bindParam(8,$fecha);
         $pdo->bindParam(9,$gen);
         $pdo->bindParam(10,$estado);
